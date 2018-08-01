@@ -1,13 +1,13 @@
 {
     "name": "signal/php",
     "type": "library",
-    "description": "A PHP wrapper for Signal's soap API",
-    "keywords": ["signal", "sms", "api"],
+    "description": "A PHP wrapper for Signal's SOAP API",
+    "keywords": ["signal", "sms", "api", "soap"],
     "homepage": "http://github.com/SignalADS/signal-php",
-    "license": "GPL3",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Signal API Team",
+            "name": "Signal SOAP API Team",
             "email": "amdeadman@gmail.com"
         }
     ],
