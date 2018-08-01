@@ -1,18 +1,29 @@
 {
-    "name": "signal/php",
-    "type": "library",
-    "description": "A PHP wrapper for Signal's SOAP API",
-    "keywords": ["signal", "sms", "api", "soap"],
-    "homepage": "http://github.com/SignalADS/signal-php",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Signal SOAP API Team",
-            "email": "amdeadman@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0"
-    },
-    "minimum-stability" : "stable"
+  "name": "signal/php",
+  "type": "library",
+  "description": "A PHP wrapper for Signal's SOAP API",
+  "keywords": [
+    "signal",
+    "sms",
+    "api",
+    "soap"
+  ],
+  "homepage": "http://github.com/SignalADS/signal-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "MedGa",
+      "email": "amdeadman@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Signal\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
 }
