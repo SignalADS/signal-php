@@ -7,30 +7,25 @@ class MultiValidator
     /**
      * Validate multi message;
      *
-     * @param string $text
+     * @param array $texts
      * @param array $numbers
-     * @param bool $noDebug
      * @throws \Signal\Exceptions\SendTextMessageValidatorException
      */
-    public static function validate($text, &$numbers, $noDebug = false)
+    public static function validate($texts, $numbers)
     {
-        if (!$text ||  !is_string($text) ) {
-            throw new SendTextMessageValidatorException('can not send text message for empty or none string $text');
+        if (!$texts || !is_array($texts)) {
+            throw new SendTextMessageValidatorException('can not send text message for empty or none array $texts');
         }
 
         if (!$numbers || !is_array($numbers)) {
-            throw new SendTextMessageValidatorException('can not send text message for empty or none integer $number');
+            throw new SendTextMessageValidatorException('can not send text message for empty or none array $numbers');
         }
 
         foreach ($numbers as $index => $number) {
-            $number = (int)$number;
-            if ($noDebug) {
-                if (!$number || !is_int($number)) {
-                    unset($numbers[$index]);
-                }
-            } elseif (!$number || !is_int($number)) {
-                throw new SendTextMessageValidatorException('Signal: can not send text message for empty or none integer $number');
-            }
+
+            SingleValidator::validate($texts[$index],
+                is_array($number) ? $number : [$number]);
+
         }
     }
 }

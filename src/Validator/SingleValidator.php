@@ -7,20 +7,24 @@ class SingleValidator
     /**
      * Validate single message;
      *
-     * @param $text
-     * @param $number
+     * @param string $text
+     * @param array $numbers
      * @throws \Signal\Exceptions\SendTextMessageValidatorException
      */
-    public static function validate($text, $number)
+    public static function validate($text, $numbers)
     {
-        $number = (int) $number;
-
         if (!$text ||  !is_string($text) ) {
             throw new SendTextMessageValidatorException('can not send text message for empty or none string $text');
         }
 
-        if(!$number || !is_int($number)) {
-            throw new SendTextMessageValidatorException('can not send text message for empty or none integer $number');
+        if(!$numbers || !is_array($numbers)) {
+            throw new SendTextMessageValidatorException('can not send text message for empty or none array $numbers');
+        } else {
+            foreach ($numbers as $number) {
+                if(!$number) {
+                    throw new SendTextMessageValidatorException('can not send text message for empty or valid $number');
+                }
+            }
         }
     }
 }

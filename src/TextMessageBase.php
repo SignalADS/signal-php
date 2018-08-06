@@ -105,17 +105,57 @@ class TextMessageBase
     }
 
     /**
-     * @param $text
-     * @param $numbers
+     * @param array $texts
+     * @param array $numbers
      * @return mixed
      */
-    protected function sendMulti($text, $numbers)
+    protected function sendMultiText($texts, $numbers)
     {
+        $froms = $types = [];
+        foreach ($numbers as $number) {
+            $froms[] = $this->fromNumber;
+            $types[] = $this->messageType;
+        }
         $result = $this->client->SendMultiSMS(
-            $this->fromNumber,
+            $froms,
             $numbers,
-            $text,
-            $this->messageType,
+            $texts,
+            $types,
+            $this->username,
+            $this->password);
+
+        return $result;
+    }
+
+    /**
+     * @param array $ids
+     * @return mixed
+     */
+    protected function checkStatus($ids)
+    {
+        $result = $this->client->GetStatus(
+            $this->username,
+            $this->password,
+            $ids);
+
+        $return = [];
+        if(count($result) == count($ids) && count($result)>1) {
+            foreach ($ids as $index => $id) {
+                $return[$id] = $result[$index];
+            }
+        } else {
+            $return = $result;
+        }
+
+        return $return;
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function checkCredit()
+    {
+        $result = $this->client->GetCredit(
             $this->username,
             $this->password);
 

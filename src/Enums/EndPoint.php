@@ -2,5 +2,5 @@
 
 class EndPoint
 {
-    CONST SOAP = 'http://panel.signalads.com/webservice/send?wsdl';
+    CONST SOAP = 'http://panel.signalads.com/webservice/send.php?wsdl';
 }
