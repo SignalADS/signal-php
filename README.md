@@ -20,7 +20,7 @@ $ composer require signal/php
 "signal/php": "*"
 ```
 
-و کامپوزر را بروز کنید 
+را به فایل composer.json اضافه کرده و کامپوزر را بروز کنید 
 
 
 ```php
