@@ -138,16 +138,18 @@ class TextMessageBase
             $this->password,
             $ids);
 
-        $return = [];
-        if(count($result) == count($ids) && count($result)>1) {
-            foreach ($ids as $index => $id) {
-                $return[$id] = $result[$index];
-            }
-        } else {
-            $return = $result;
-        }
+//         $return = [];
+//         if(count($result) == count($ids) && count($result)>1) {
+//             foreach ($ids as $index => $id) {
+//                 $return[$id] = $result[$index];
+//             }
+//         } else {
+//             $return = $result;
+//         }
 
-        return $return;
+//         return $return;
+        
+        return $result;
     }
 
     /**
